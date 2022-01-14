@@ -1,5 +1,6 @@
 // Given a string s, find the length of the longest substring without repeating characters.
 
+// Slide Window Technique
 /**
  * @param {string} s
  * @return {number}
