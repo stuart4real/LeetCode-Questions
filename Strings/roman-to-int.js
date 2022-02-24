@@ -23,7 +23,7 @@
  * @return {number}
  */
 var romanToInt = function (s) {
-	symbols = {
+	let symbols = {
 		I: 1,
 		V: 5,
 		X: 10,
