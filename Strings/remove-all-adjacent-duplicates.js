@@ -46,3 +46,27 @@ var removeDuplicatesV = function (s, k) {
 
 	return sc.slice(0, i + 1).join("");
 };
+
+// Special case when k = 2
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var removePairDuplicates = function (s) {
+	// i: the index to set next character in the output string
+	// j: the index of current iteration in the input string
+	let i = 0,
+		j = 0,
+		n = s.length,
+		result = [...s];
+
+	for (j; j < n; ++j, ++i) {
+		result[i] = s.charAt(j);
+		if (i > 0 && result[i - 1] === result[i]) i -= 2;
+	}
+
+	return result.slice(0, i).join("");
+};
+
+console.log(removePairDuplicates("abbaca"));
