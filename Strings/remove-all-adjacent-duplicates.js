@@ -59,6 +59,7 @@ var removePairDuplicates = function (s) {
 	let i = 0,
 		j = 0,
 		n = s.length,
+		// convert s to a char array using deconstruct
 		result = [...s];
 
 	for (j; j < n; ++j, ++i) {
