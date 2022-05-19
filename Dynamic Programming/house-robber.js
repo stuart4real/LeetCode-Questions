@@ -46,3 +46,17 @@ var robWithConstantSpace = function (nums) {
 	return maxAtOneBefore;
 };
 console.log(robWithConstantSpace([2, 1, 1, 2]));
+
+// Given that all houses are arranged in a circle.
+
+var robWithCircle = function (nums) {
+	// compare two options:
+	// 1. rob the first house
+	// 2. do not rob the first house
+	return Math.max(
+		robWithConstantSpace(nums.slice(1)),
+		robWithConstantSpace(nums.slice(2).concat([nums[0]]))
+	);
+};
+
+console.log(robWithCircle([2, 3, 2]));
