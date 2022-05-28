@@ -128,3 +128,43 @@ var backtrack3 = function (result, temp, candidates, k, n, start) {
 		temp.pop();
 	}
 };
+
+// Given two integers n and k, return all possible combinations of k numbers out of the range [1, n].
+
+// You may return the answer in any order.
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number[][]}
+ */
+var combine = function (n, k) {
+	// generate the target array
+	let nums = Array(n);
+	for (let i = 0; i < n; i++) nums[i] = i + 1;
+
+	let temp = [],
+		result = [];
+
+	// call backtrack
+	backtrackWithK(result, temp, nums, k, 0);
+
+	return result;
+};
+
+var backtrackWithK = function (result, temp, nums, k, start) {
+	if (temp.length === k) result.push(Array.from(temp));
+
+	for (let i = start; i < nums.length; i++) {
+		// take the current element
+		temp.push(nums[i]);
+
+		// backtrack
+		backtrackWithK(result, temp, nums, k, i + 1);
+
+		// skip the current element
+		temp.pop();
+	}
+};
+
+console.log(combine(4, 2));
