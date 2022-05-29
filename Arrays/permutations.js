@@ -149,3 +149,44 @@ var reverseSort = function (nums, start, end) {
 		swap(nums, i, start + end - i);
 	}
 };
+
+// Given a string s, you can transform every letter individually to be lowercase or uppercase to create another string.
+
+// Return a list of all possible strings we could create. Return the output in any order.
+
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+var letterCasePermutation = function (s) {
+	let result = [],
+		temp = [];
+
+	backTrack(result, temp, s.split(""), 0);
+
+	return result;
+};
+
+var backTrack = function (result, temp, characters, start) {
+	if (temp.length === characters.length) result.push(temp.join(""));
+	else {
+		let curr = characters[start];
+
+		// toggle lower/upper case
+		curr =
+			curr === curr.toLowerCase() ? curr.toUpperCase() : curr.toLowerCase();
+
+		temp.push(curr);
+		backTrack(result, temp, characters, start + 1);
+		temp.pop();
+
+		// do not reset if it's a digit
+		if (curr.toLowerCase() !== curr.toUpperCase()) {
+			temp.push(characters[start]);
+			backTrack(result, temp, characters, start + 1);
+			temp.pop();
+		}
+	}
+};
+console.log(letterCasePermutation("a1b2"));
+console.log(letterCasePermutation("C"));
