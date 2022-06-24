@@ -180,7 +180,7 @@ var backTrack = function (result, temp, characters, start) {
 		backTrack(result, temp, characters, start + 1);
 		temp.pop();
 
-		// do not reset if it's a digit
+		// back track for non-digit characters
 		if (curr.toLowerCase() !== curr.toUpperCase()) {
 			temp.push(characters[start]);
 			backTrack(result, temp, characters, start + 1);
